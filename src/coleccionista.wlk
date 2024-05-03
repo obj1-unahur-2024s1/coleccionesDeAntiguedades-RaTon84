@@ -1,9 +1,9 @@
 import antiguedad.*
 
 object coleccionista {
-	var coleccion = [farol];
+	var coleccion = [farol,lampara];
 	
-	method getAntiguedades(){return coleccion}
+	method coleccion(){return coleccion}
 	method addAntiguedad(antiguedad){
 		coleccion.add(antiguedad);
 	}
@@ -19,10 +19,33 @@ object coleccionista {
 	method ultimaAntiguedad(){
 		return coleccion.last();
 	}
-	/*ver si es lo que se espera */
 	method esMuyAntigua(antiguedad){
-		return coleccion.hayAntiguedad(antiguedad) 
-			&& antiguedad.getAnios() > 100;		
+		return coleccion.filter({a => a==antiguedad}).map({a=>a.getAnios()>100})
+	}	
+	method calcularAnios2(antiguedad){
+		return coleccion.filter({a => a==antiguedad}).map({a=> a.getAnios()});
+	}	
+	method restaurarPrimerAntiguedad(){
+		return coleccion.first().restaurar();
+	}
+	method restaurarUltimaAntiguedad(){
+		return coleccion.last().restaurar();
+	}
+	method restaurarAntiguedadEnPosicion(posicion){
+		return coleccion.get(posicion-1).restaurar();
+	}
+	method restaurarAntiguedad(antiguedad){
+		const obj= coleccion.filter({a => a==antiguedad});
+		//return obj;
+		if(obj.map({a=> a.estaEnMalEstado()})==[true]){
+			obj.forEach({a=>a.restaurar()});
+		}
+	}
+	method restaurarAntiguedad2(antiguedad){
+		coleccion.forEach({a => a==antiguedad})
+	}
+	method venderTodo(){
+		coleccion.clear();
 	}
 	
 }

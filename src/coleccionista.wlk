@@ -42,7 +42,7 @@ object coleccionista {
 		}
 	}
 	method restaurarAntiguedad2(antiguedad){
-		coleccion.forEach({a => a==antiguedad})
+		//coleccion.forEach({a => a==antiguedad})
 	}
 	method venderTodo(){
 		coleccion.clear();

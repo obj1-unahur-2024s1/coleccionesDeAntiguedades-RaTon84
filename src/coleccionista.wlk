@@ -46,9 +46,6 @@ object coleccionista {
 			antiguedad.restaurar();
 		}
 	}
-	method restaurarAntiguedad3(antiguedad){
-		//coleccion.forEach({a => a==antiguedad})
-	}
 	method venderTodo(){
 		coleccion.clear();
 	}

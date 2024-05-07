@@ -41,7 +41,12 @@ object coleccionista {
 			obj.forEach({a=>a.restaurar()});
 		}
 	}
-	method restaurarAntiguedad2(antiguedad){
+	method restaurarAntiguedad2(antiguedad){		
+		if(antiguedad.estaEnMalEstado()){
+			antiguedad.restaurar();
+		}
+	}
+	method restaurarAntiguedad3(antiguedad){
 		//coleccion.forEach({a => a==antiguedad})
 	}
 	method venderTodo(){
